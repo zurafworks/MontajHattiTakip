@@ -13,7 +13,7 @@ namespace MHT.Entity.Entities
     /// 
     /// Örneğin; A kişisi B Makinesini Saat 10:00 ile 12:00 arasında C amacıyla kullandı.
     /// </summary>
-    public class Kullanım:IEntity
+    public class Kullanim:IEntity
     {
         public int Id { get; set; }
 

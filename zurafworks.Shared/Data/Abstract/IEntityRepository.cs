@@ -81,5 +81,7 @@ namespace zurafworks.Shared.Data.Abstract
         /// <returns></returns>
         Task<int> CountAsync(Expression<Func<T, bool>> predicate);
         #endregion
+
+
     }
 }

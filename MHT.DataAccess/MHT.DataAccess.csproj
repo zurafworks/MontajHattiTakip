@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MHT.Entity\MHT.Entity.csproj" />
+    <ProjectReference Include="..\zurafworks.Shared\zurafworks.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
