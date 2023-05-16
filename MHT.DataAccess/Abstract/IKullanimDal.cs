@@ -1,4 +1,5 @@
-﻿using MHT.Entity.Entities;
+﻿using MHT.Entity.DTOs;
+using MHT.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace MHT.DataAccess.Abstract
 {
     public interface IKullanimDal:IEntityRepository<Kullanim>
     {
+        public IList<KullanimDto> GetAllKullanimDto();
     }
 }

@@ -20,7 +20,6 @@ namespace MHT.Entity.Entities
         /// İşlemin Adı, Örneğin giriş, çıkış, mola başlangıç vb.
         /// </summary>
         public string IslemAdi { get; set; }
-
         public bool IsDeleted { get; set; }
     }
 }

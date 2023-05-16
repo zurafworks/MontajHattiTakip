@@ -8,5 +8,6 @@ namespace MHT.Business.Abstract
 {
     public interface IIslemService
     {
+
     }
 }
