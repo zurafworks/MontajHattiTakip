@@ -46,6 +46,9 @@
             // 
             // dgwVeriler
             // 
+            this.dgwVeriler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgwVeriler.BackgroundColor = System.Drawing.Color.DarkBlue;
             this.dgwVeriler.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgwVeriler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -59,6 +62,9 @@
             // 
             // drpdwnSelectedVeri
             // 
+            this.drpdwnSelectedVeri.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.drpdwnSelectedVeri.BackColor = System.Drawing.Color.DarkBlue;
             this.drpdwnSelectedVeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.drpdwnSelectedVeri.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -76,6 +82,9 @@
             // 
             // btnShiftStart
             // 
+            this.btnShiftStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShiftStart.BackColor = System.Drawing.Color.Transparent;
             this.btnShiftStart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShiftStart.BackgroundImage")));
             this.btnShiftStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -93,6 +102,9 @@
             // 
             // btnShiftEnd
             // 
+            this.btnShiftEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShiftEnd.BackColor = System.Drawing.Color.Transparent;
             this.btnShiftEnd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShiftEnd.BackgroundImage")));
             this.btnShiftEnd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -110,6 +122,9 @@
             // 
             // btnBreakStart
             // 
+            this.btnBreakStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBreakStart.BackColor = System.Drawing.Color.Transparent;
             this.btnBreakStart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBreakStart.BackgroundImage")));
             this.btnBreakStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -127,6 +142,9 @@
             // 
             // btnUseStart
             // 
+            this.btnUseStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUseStart.BackColor = System.Drawing.Color.Transparent;
             this.btnUseStart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUseStart.BackgroundImage")));
             this.btnUseStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -144,6 +162,9 @@
             // 
             // btnBreakEnd
             // 
+            this.btnBreakEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBreakEnd.BackColor = System.Drawing.Color.Transparent;
             this.btnBreakEnd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBreakEnd.BackgroundImage")));
             this.btnBreakEnd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -161,6 +182,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -173,6 +197,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -185,6 +212,9 @@
             // 
             // btnUseEnd
             // 
+            this.btnUseEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUseEnd.BackColor = System.Drawing.Color.Transparent;
             this.btnUseEnd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUseEnd.BackgroundImage")));
             this.btnUseEnd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -202,6 +232,9 @@
             // 
             // lblEmployeeName
             // 
+            this.lblEmployeeName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEmployeeName.AutoSize = true;
             this.lblEmployeeName.BackColor = System.Drawing.Color.Transparent;
             this.lblEmployeeName.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -214,6 +247,9 @@
             // 
             // lblSurname
             // 
+            this.lblSurname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSurname.AutoSize = true;
             this.lblSurname.BackColor = System.Drawing.Color.Transparent;
             this.lblSurname.Font = new System.Drawing.Font("Segoe UI Black", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
