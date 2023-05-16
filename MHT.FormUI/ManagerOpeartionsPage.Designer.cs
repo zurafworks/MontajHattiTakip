@@ -40,6 +40,9 @@
             // 
             // dgwVeriler
             // 
+            this.dgwVeriler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgwVeriler.BackgroundColor = System.Drawing.Color.DarkBlue;
             this.dgwVeriler.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgwVeriler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -53,6 +56,9 @@
             // 
             // btnAddNew
             // 
+            this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddNew.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddNew.BackgroundImage")));
             this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -70,6 +76,9 @@
             // 
             // btnGuncelle
             // 
+            this.btnGuncelle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuncelle.BackColor = System.Drawing.Color.Transparent;
             this.btnGuncelle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuncelle.BackgroundImage")));
             this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -87,6 +96,9 @@
             // 
             // btnSil
             // 
+            this.btnSil.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSil.BackColor = System.Drawing.Color.Transparent;
             this.btnSil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSil.BackgroundImage")));
             this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -104,6 +116,9 @@
             // 
             // tbxSearch
             // 
+            this.tbxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxSearch.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxSearch.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -117,6 +132,9 @@
             // 
             // btnDetay
             // 
+            this.btnDetay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDetay.BackColor = System.Drawing.Color.Transparent;
             this.btnDetay.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDetay.BackgroundImage")));
             this.btnDetay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -134,8 +152,7 @@
             // 
             // ManagerOpeartionsPageUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

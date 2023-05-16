@@ -36,6 +36,9 @@
             // 
             // btnEmployeeOperations
             // 
+            this.btnEmployeeOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEmployeeOperations.BackColor = System.Drawing.Color.Transparent;
             this.btnEmployeeOperations.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmployeeOperations.BackgroundImage")));
             this.btnEmployeeOperations.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -53,6 +56,9 @@
             // 
             // btnMachineOperations
             // 
+            this.btnMachineOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMachineOperations.BackColor = System.Drawing.Color.Transparent;
             this.btnMachineOperations.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMachineOperations.BackgroundImage")));
             this.btnMachineOperations.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -70,6 +76,9 @@
             // 
             // fpGraphicView
             // 
+            this.fpGraphicView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.fpGraphicView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.fpGraphicView.Location = new System.Drawing.Point(66, 67);
             this.fpGraphicView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -79,8 +88,7 @@
             // 
             // ManagerHomePageUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

@@ -40,6 +40,9 @@
             // 
             // tbxIsim
             // 
+            this.tbxIsim.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxIsim.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxIsim.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxIsim.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -52,6 +55,9 @@
             // 
             // tbxSoyisim
             // 
+            this.tbxSoyisim.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxSoyisim.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxSoyisim.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxSoyisim.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -64,6 +70,9 @@
             // 
             // tbxUsername
             // 
+            this.tbxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxUsername.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -76,6 +85,9 @@
             // 
             // tbxPassword
             // 
+            this.tbxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxPassword.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -88,6 +100,9 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -104,6 +119,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -114,23 +132,25 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Yeni Çalışan";
             // 
-            // checkBox1
+            // cbxIsManager
             // 
+            this.cbxIsManager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxIsManager.AutoSize = true;
             this.cbxIsManager.BackColor = System.Drawing.Color.Transparent;
             this.cbxIsManager.Font = new System.Drawing.Font("Arial Narrow", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.cbxIsManager.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cbxIsManager.Location = new System.Drawing.Point(420, 198);
-            this.cbxIsManager.Name = "checkBox1";
+            this.cbxIsManager.Name = "cbxIsManager";
             this.cbxIsManager.Size = new System.Drawing.Size(188, 29);
             this.cbxIsManager.TabIndex = 9;
             this.cbxIsManager.Text = "      Yönetici Hesap";
             this.cbxIsManager.UseVisualStyleBackColor = false;
             // 
-            // ManagerEditPageUI
+            // ManagerUserEditPageUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -145,7 +165,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "ManagerEditPageUI";
+            this.Name = "ManagerUserEditPageUI";
             this.Text = "Manager Edit Page";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EkleUser_FormClosed);
             this.Load += new System.EventHandler(this.ManagerEditPageUI_Load);
