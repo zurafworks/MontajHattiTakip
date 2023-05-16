@@ -2,12 +2,11 @@
 
 namespace ZrfMusteriTakip.FormUI
 {
-    public partial class GirisYapForm : Form
+    public partial class LoginUI : Form
     {
-        //ILifetimeScope _lifetimeScope;
-       
-        private static int _girisDenemeSayisi = 0;
-        public GirisYapForm()
+
+        public static int currentId;
+        public LoginUI()
         {
           
             InitializeComponent();
@@ -18,40 +17,26 @@ namespace ZrfMusteriTakip.FormUI
         {
             var userName = tbxUsername.Text;
             var password = tbxPassword.Text;
-            var activate = false;
 
-            if (userName == "activate" && password == "VolleyZWasAMistake")
+            //Kontroller YöneticiMi ile yapýlacak current id de deðiþtirilecek gelen veriye göre
+            if (userName == "1")
             {
-                activate= true;
+                ManagerHomePageUI managerHomePageUI = new ManagerHomePageUI();
+                managerHomePageUI.Show();
+                this.Hide();
             }
-
-            _girisDenemeSayisi++;
-            if (/*_userService.CheckPassword(userName, password).Result || activate== true*/true) 
-            { 
-                //var homePage = new HomePage(/*islemService*/_islemService, _userService, _musteriService, _aracService, _islemUserService);
-                //homePage.Show();
-                //this.Hide();
-            }
-            else if (_girisDenemeSayisi >= 3)
+            else if(userName == "2")
             {
-                ClrTbx();
-                MessageBox.Show("Giriþ Baþarýsýz. Þifrenizi unuttuysanýz veya kullanýcý adý ve þifrenizin" +
-                    " doðru olduðundan eminseniz lütfen bizimle iletiþime geçin.\n" +
-                    "Iletiþim : info@zurafworks.com", "Yetkisiz Eriþim",MessageBoxButtons.OK);
+                EmployeeOperationsPageUI employeeOperationsPageUI = new EmployeeOperationsPageUI();
+                employeeOperationsPageUI.Show();
+                this.Hide();
             }
-            //var islemService = Program.Container.ResolveOptional<IslemManager>();
-            //var homePage = Program.Container.Resolve<HomePage>();
             else
             {
                 ClrTbx();
                 MessageBox.Show("Giriþ baþarýsýz, lütfen tekrar deneyin.", "Yetkisiz Eriþim");
             }
             
-        }
-
-        private void tbxUsername_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void GirisYapForm_Load(object sender, EventArgs e)

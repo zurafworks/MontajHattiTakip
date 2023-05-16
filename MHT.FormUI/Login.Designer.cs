@@ -1,6 +1,6 @@
 ﻿namespace ZrfMusteriTakip.FormUI
 {
-    partial class GirisYapForm
+    partial class LoginUI
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,22 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginUI));
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnGirisYap = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tbxUsername = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbxPassword
             // 
-            this.tbxPassword.BackColor = System.Drawing.Color.CadetBlue;
+            this.tbxPassword.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbxPassword.ForeColor = System.Drawing.Color.White;
-            this.tbxPassword.Location = new System.Drawing.Point(139, 331);
+            this.tbxPassword.Location = new System.Drawing.Point(139, 294);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PlaceholderText = "Şifre";
             this.tbxPassword.Size = new System.Drawing.Size(245, 32);
@@ -53,6 +50,7 @@
             // btnGirisYap
             // 
             this.btnGirisYap.BackColor = System.Drawing.Color.Transparent;
+            this.btnGirisYap.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGirisYap.BackgroundImage")));
             this.btnGirisYap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGirisYap.FlatAppearance.BorderSize = 0;
             this.btnGirisYap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -67,59 +65,36 @@
             this.btnGirisYap.UseVisualStyleBackColor = false;
             this.btnGirisYap.Click += new System.EventHandler(this.onClick_girisYap);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(82, 57);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(355, 64);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(92, 144);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(327, 33);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
             // tbxUsername
             // 
-            this.tbxUsername.BackColor = System.Drawing.Color.CadetBlue;
+            this.tbxUsername.BackColor = System.Drawing.Color.DarkBlue;
             this.tbxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbxUsername.ForeColor = System.Drawing.Color.White;
-            this.tbxUsername.Location = new System.Drawing.Point(139, 263);
+            this.tbxUsername.Location = new System.Drawing.Point(139, 227);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.PlaceholderText = "Kullanıcı Adı";
             this.tbxUsername.Size = new System.Drawing.Size(245, 32);
             this.tbxUsername.TabIndex = 0;
             // 
-            // GirisYapForm
+            // LoginUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(504, 481);
             this.Controls.Add(this.tbxUsername);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnGirisYap);
             this.Controls.Add(this.tbxPassword);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "GirisYapForm";
+            this.Name = "LoginUI";
             this.Text = "MHT Login";
             this.Load += new System.EventHandler(this.GirisYapForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +103,6 @@
         #endregion
         private TextBox tbxPassword;
         private Button btnGirisYap;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private TextBox tbxUsername;
     }
 }
