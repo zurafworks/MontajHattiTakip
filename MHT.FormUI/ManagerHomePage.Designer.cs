@@ -44,13 +44,13 @@
             this.btnEmployeeOperations.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmployeeOperations.FlatAppearance.BorderSize = 0;
             this.btnEmployeeOperations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeOperations.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEmployeeOperations.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEmployeeOperations.ForeColor = System.Drawing.Color.White;
             this.btnEmployeeOperations.Location = new System.Drawing.Point(1012, 110);
             this.btnEmployeeOperations.Name = "btnEmployeeOperations";
             this.btnEmployeeOperations.Size = new System.Drawing.Size(181, 77);
             this.btnEmployeeOperations.TabIndex = 2;
-            this.btnEmployeeOperations.Text = "    İşçi     İşlemleri";
+            this.btnEmployeeOperations.Text = "İşçi \r\nİşlemleri";
             this.btnEmployeeOperations.UseVisualStyleBackColor = false;
             this.btnEmployeeOperations.Click += new System.EventHandler(this.btnEmployeeOperations_Click);
             // 
@@ -64,13 +64,13 @@
             this.btnMachineOperations.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMachineOperations.FlatAppearance.BorderSize = 0;
             this.btnMachineOperations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMachineOperations.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMachineOperations.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnMachineOperations.ForeColor = System.Drawing.Color.White;
             this.btnMachineOperations.Location = new System.Drawing.Point(1012, 217);
             this.btnMachineOperations.Name = "btnMachineOperations";
             this.btnMachineOperations.Size = new System.Drawing.Size(181, 77);
             this.btnMachineOperations.TabIndex = 2;
-            this.btnMachineOperations.Text = "Makine İşlemleri";
+            this.btnMachineOperations.Text = "Makine\r\nİşlemleri";
             this.btnMachineOperations.UseVisualStyleBackColor = false;
             this.btnMachineOperations.Click += new System.EventHandler(this.btnEmployeeOperations_Click);
             // 

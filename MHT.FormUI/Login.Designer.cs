@@ -43,7 +43,7 @@
             this.tbxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbxPassword.ForeColor = System.Drawing.Color.White;
-            this.tbxPassword.Location = new System.Drawing.Point(139, 294);
+            this.tbxPassword.Location = new System.Drawing.Point(129, 289);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PlaceholderText = "Şifre";
             this.tbxPassword.Size = new System.Drawing.Size(245, 32);
@@ -80,7 +80,7 @@
             this.tbxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbxUsername.ForeColor = System.Drawing.Color.White;
-            this.tbxUsername.Location = new System.Drawing.Point(139, 227);
+            this.tbxUsername.Location = new System.Drawing.Point(129, 222);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.PlaceholderText = "Kullanıcı Adı";
             this.tbxUsername.Size = new System.Drawing.Size(245, 32);

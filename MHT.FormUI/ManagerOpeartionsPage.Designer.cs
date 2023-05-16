@@ -64,7 +64,7 @@
             this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddNew.FlatAppearance.BorderSize = 0;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddNew.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddNew.ForeColor = System.Drawing.Color.White;
             this.btnAddNew.Location = new System.Drawing.Point(979, 142);
             this.btnAddNew.Name = "btnAddNew";
@@ -84,7 +84,7 @@
             this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuncelle.FlatAppearance.BorderSize = 0;
             this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuncelle.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnGuncelle.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnGuncelle.ForeColor = System.Drawing.Color.White;
             this.btnGuncelle.Location = new System.Drawing.Point(979, 218);
             this.btnGuncelle.Name = "btnGuncelle";
@@ -104,7 +104,7 @@
             this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSil.FlatAppearance.BorderSize = 0;
             this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSil.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSil.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSil.ForeColor = System.Drawing.Color.White;
             this.btnSil.Location = new System.Drawing.Point(979, 295);
             this.btnSil.Name = "btnSil";
@@ -140,7 +140,7 @@
             this.btnDetay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDetay.FlatAppearance.BorderSize = 0;
             this.btnDetay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetay.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDetay.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDetay.ForeColor = System.Drawing.Color.White;
             this.btnDetay.Location = new System.Drawing.Point(979, 436);
             this.btnDetay.Name = "btnDetay";
