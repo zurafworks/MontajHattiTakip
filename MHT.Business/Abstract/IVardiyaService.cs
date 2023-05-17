@@ -14,5 +14,6 @@ namespace MHT.Business.Abstract
         public Task<IList<VardiyaDto>> GetAllAsync();
         public Task AddAsync(Vardiya vardiya);
         public Task UpdateAsync(Vardiya vardiya);
+        public Task<Vardiya> CheckActive(int userId, int islemId);
     }
 }

@@ -41,6 +41,12 @@ namespace MHT.Business.Concrete
             return await _unitOfWork.Makinaler.GetAsync(m=>m.Id== id);
         }
 
+        public async Task<int> GetByName(string makineAdi)
+        {
+            var makine = await _unitOfWork.Makinaler.GetAsync(x => x.MakineAdi == makineAdi);
+            return makine.Id;
+        }
+
         public async Task UpdateAsync(Makine makine)
         {
             await _unitOfWork.Makinaler.UpdateAsync(makine);

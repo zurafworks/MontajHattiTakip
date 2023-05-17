@@ -14,5 +14,6 @@ namespace MHT.Business.Abstract
         public Task<IList<MakineDto>> GetAllAsync();
         public Task AddAsync(Makine makine);
         public Task UpdateAsync(Makine makine);
+        public Task<int> GetByName(string makineAdi);
     }
 }

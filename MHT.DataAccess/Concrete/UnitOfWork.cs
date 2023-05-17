@@ -1,6 +1,7 @@
 ﻿using MHT.DataAccess.Abstract;
 using MHT.DataAccess.Concrete.Contexts;
 using MHT.DataAccess.Concrete.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace MHT.DataAccess.Concrete
     public class UnitOfWork : IUnitOfWork
     {
         private readonly MhtContext _context;
-        public UnitOfWork(MhtContext context)
+        public UnitOfWork(DbContext db)
         {
-            _context = context;
+            _context = (MhtContext)db;
         }
 
         private EfIslemDal _islemDal;

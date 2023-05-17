@@ -76,7 +76,6 @@
             this.drpdwnSelectedVeri.TabIndex = 13;
             this.drpdwnSelectedVeri.Text = "Listelenecek Veri";
             this.drpdwnSelectedVeri.SelectedIndexChanged += new System.EventHandler(this.drpdwnSelectedVeri_SelectedIndexChanged);
-            this.drpdwnSelectedVeri.Enter += new System.EventHandler(this.drpdwnSelectedVeri_Enter);
             this.drpdwnSelectedVeri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.drpdwnSelectedVeri_KeyPress);
             this.drpdwnSelectedVeri.MouseClick += new System.Windows.Forms.MouseEventHandler(this.drpdwnSelectedVeri_MouseClick);
             // 

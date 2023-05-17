@@ -1,35 +1,51 @@
 
 
+using MHT.Business.Abstract;
+
 namespace ZrfMusteriTakip.FormUI
 {
     public partial class LoginUI : Form
     {
+        private readonly IIslemService _islemService;
+        private readonly IKullaniciService _kullaniciService;
+        private readonly IKullanimService _kullanimService;
+        private readonly IMakineService _makineService;
+        private readonly IVardiyaService _vardiyaService;
 
         public static int currentId;
-        public LoginUI()
+        public LoginUI(IIslemService islemService,IKullaniciService kullaniciService, IKullanimService kullanimService, IMakineService makineService, IVardiyaService vardiyaService)
         {
-          
+            _islemService = islemService;
+            _kullaniciService = kullaniciService;
+            _kullanimService = kullanimService;
+            _makineService = makineService;
+            _vardiyaService = vardiyaService;
+
             InitializeComponent();
-           
         }
 
-        private void onClick_girisYap(object sender, EventArgs e)
+        private async void onClick_girisYap(object sender, EventArgs e)
         {
             var userName = tbxUsername.Text;
             var password = tbxPassword.Text;
 
+            var girisYapan = await _kullaniciService.CheckPassword(userName, password);
             //Kontroller YöneticiMi ile yapýlacak current id de deðiþtirilecek gelen veriye göre
-            if (userName == "1")
+            if(girisYapan.Id != null)
             {
-                ManagerHomePageUI managerHomePageUI = new ManagerHomePageUI();
-                managerHomePageUI.Show();
-                this.Hide();
-            }
-            else if(userName == "2")
-            {
-                EmployeeOperationsPageUI employeeOperationsPageUI = new EmployeeOperationsPageUI();
-                employeeOperationsPageUI.Show();
-                this.Hide();
+                currentId = girisYapan.Id;
+                if (girisYapan.YoneticiMi == true)
+                {
+                    ManagerHomePageUI managerHomePageUI = new ManagerHomePageUI();
+                    managerHomePageUI.Show();
+                    this.Hide();
+                }
+                else if (girisYapan.YoneticiMi == false)
+                {
+                    EmployeeOperationsPageUI employeeOperationsPageUI = new EmployeeOperationsPageUI(_islemService, _kullanimService, _vardiyaService, _kullaniciService, _makineService);
+                    employeeOperationsPageUI.Show();
+                    this.Hide();
+                }
             }
             else
             {

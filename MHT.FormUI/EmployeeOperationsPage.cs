@@ -1,4 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using MHT.Business.Abstract;
+using MHT.DataAccess.Abstract;
+using MHT.Entity.Entities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +20,21 @@ namespace ZrfMusteriTakip.FormUI
     public partial class EmployeeOperationsPageUI : Form
     {
         private static int employeeId;
-        public EmployeeOperationsPageUI()
-        {
-            InitializeComponent();
+        private static int selectedMachine;
 
+        private readonly IIslemService _islemService;
+        private readonly IKullanimService _kullanimService;
+        private readonly IVardiyaService _vardiyaService;
+        private readonly IKullaniciService _kullaniciService;
+        private readonly IMakineService _makineService;
+        public EmployeeOperationsPageUI(IIslemService islemService, IKullanimService kullanimService,IVardiyaService vardiyaService, IKullaniciService kullaniciService, IMakineService makineService)
+        {
+            _islemService = islemService;
+            _kullanimService = kullanimService;
+            _vardiyaService = vardiyaService;
+            _kullaniciService = kullaniciService;
+            _makineService = makineService;
+            InitializeComponent();
         }
 
         private async void HomePage_onload(object sender, EventArgs e)
@@ -34,10 +48,18 @@ namespace ZrfMusteriTakip.FormUI
             GetDatasToGrid();
 
             //Tüm makineler dropdown'a eklenmeli
-            //drpdwnSelectedVeri.Items.Add("Araç");
+            var makineler = await _makineService.GetAllAsync();
+            for(int i = 0; i < makineler.Count; i++)
+            {
+                drpdwnSelectedVeri.Items.Add(makineler[i].MakineAdi);
+            }
 
             //kullanıcı isim soyismi labellara basılmalı
             employeeId = LoginUI.currentId;
+            var currentEmployee = await _kullaniciService.GetAsync(employeeId);
+            lblEmployeeName.Text = currentEmployee.Isim;
+            lblSurname.Text = currentEmployee.Soyisim;
+
         }
 
         private void HomePage_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,16 +69,16 @@ namespace ZrfMusteriTakip.FormUI
             if (dialogResult == DialogResult.No)
             {
                 e.Cancel = true;
-                //Application.Exit();
                 return;
             }
 
             Environment.Exit(0);
         }
 
-        private void drpdwnSelectedVeri_SelectedIndexChanged(object sender, EventArgs e)
+        private async void drpdwnSelectedVeri_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Seçim değiştiğinde ilgili makinenin idsini almalıyız muhtemelen getbyname ile iyi olabilir.
+            selectedMachine = await _makineService.GetByName(drpdwnSelectedVeri.SelectedText);
         }
 
         private void drpdwnSelectedVeri_MouseClick(object sender, MouseEventArgs e)
@@ -77,40 +99,113 @@ namespace ZrfMusteriTakip.FormUI
             e.Handled = true;
         }
 
-        private void drpdwnSelectedVeri_Enter(object sender, EventArgs e)
+        private async void btnShiftStart_Click(object sender, EventArgs e)
         {
-            //drpdwnSelectedVeri.Select(0, 0);
-        }
-
-        private void btnShiftStart_Click(object sender, EventArgs e)
-        {
-            //daha önce o kullanıcıya ait başlama tipinde aktif vardiya var mı kontrol edilecek. Yoksa
+            //daha önce o kullanıcıya ait başlama tipinde aktif vardiya var mı kontrol edilecek.
+            //Yoksa
             //datetime now ile saat alınacak kullanıcının idsi alınacak ve başlama tipinde vardiya eklenecek
+
+            var checkStart = await _vardiyaService.CheckActive(employeeId, 1);
+
+            if (checkStart == null)
+            {
+                var newVardiya = new Vardiya();
+                newVardiya.KullaniciId = employeeId;
+                newVardiya.IslemId = 1;
+                newVardiya.IslemSaati = DateTime.Now;
+
+                await _vardiyaService.AddAsync(newVardiya);
+            }
+            else
+            {
+                MessageBox.Show("Bir vardiya bitmeden bir diğerine başlanamaz! \n Vardiyaya:" + checkStart.IslemSaati + "Saatinde çoktan başladınız.");
+            }
+
         }
 
-        private void btnShiftEnd_Click(object sender, EventArgs e)
+        private async void btnShiftEnd_Click(object sender, EventArgs e)
         {
             //daha önce o kullanıcıya ait bitirme tipinde aktif vardiya var mı kontrol edilecek. Varsa
             //datetime now ile saat alınacak kullanıcının idsi alınacak ve bitirme tipinde vardiya eklenecek
             //ayrıca bulunan aktif vardiya pasif hale getirilecek
+
+            var checkStart = await _vardiyaService.CheckActive(employeeId, 1);
+
+            if (checkStart == null)
+            {
+                MessageBox.Show("Başlamış olduğunuz bir vardiya yok!");
+            }
+            else
+            {
+                var editVardiya = new Vardiya();
+                editVardiya.Id =checkStart.Id;
+                editVardiya.IsActive = false;
+                _vardiyaService.UpdateAsync(editVardiya);
+
+                var newVardiya = new Vardiya();
+                newVardiya.KullaniciId = employeeId;
+                newVardiya.IslemId = 2;
+                newVardiya.IslemSaati = DateTime.Now;
+
+                await _vardiyaService.AddAsync(newVardiya);
+
+            }
+
         }
 
-        private void btnBreakStart_Click(object sender, EventArgs e)
+        private async void btnBreakStart_Click(object sender, EventArgs e)
         {
             ////daha önce o kullanıcıya ait mola başlangıç tipinde aktif vardiya var mı kontrol edilecek. yoksa
             //datetime now ile saat alınacak kullanıcının idsi alınacak ve mola başlangıç tipinde vardiya eklenecek
+            var checkStart = await _vardiyaService.CheckActive(employeeId, 3);
+
+            if (checkStart == null)
+            {
+                var newVardiya = new Vardiya();
+                newVardiya.KullaniciId = employeeId;
+                newVardiya.IslemId = 3;
+                newVardiya.IslemSaati = DateTime.Now;
+
+                await _vardiyaService.AddAsync(newVardiya);
+            }
+            else
+            {
+                MessageBox.Show("Bir mola bitmeden bir diğerine başlanamaz! \n Molaya:" + checkStart.IslemSaati + "Saatinde çoktan başladınız.");
+            }
         }
 
-        private void btnBreakEnd_Click(object sender, EventArgs e)
+        private async void btnBreakEnd_Click(object sender, EventArgs e)
         {
             ////daha önce o kullanıcıya ait mola başlangıç tipinde aktif vardiya var mı kontrol edilecek. varsa
             //datetime now ile saat alınacak kullanıcının idsi alınacak ve mola bitiş tipinde vardiya eklenecek
             //ayrıca bulunan aktif mola pasif hale getirilecek
+            var checkStart = await _vardiyaService.CheckActive(employeeId, 3);
+
+            if (checkStart == null)
+            {
+                MessageBox.Show("Başlamış olduğunuz bir mola yok!");
+            }
+            else
+            {
+                var editVardiya = new Vardiya();
+                editVardiya.Id = checkStart.Id;
+                editVardiya.IsActive = false;
+                _vardiyaService.UpdateAsync(editVardiya);
+
+                var newVardiya = new Vardiya();
+                newVardiya.KullaniciId = employeeId;
+                newVardiya.IslemId = 4;
+                newVardiya.IslemSaati = DateTime.Now;
+
+                await _vardiyaService.AddAsync(newVardiya);
+
+            }
         }
 
         private void btnUseStart_Click(object sender, EventArgs e)
         {
             //dropdowndan seçili makine alınacak. seçili makineye ait aktif kullanım yoksa yeni bir kullanım eklenecek
+
         }
 
         private void btnUseEnd_Click(object sender, EventArgs e)

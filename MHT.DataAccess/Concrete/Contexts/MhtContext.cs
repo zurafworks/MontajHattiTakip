@@ -18,7 +18,23 @@ namespace MHT.DataAccess.Concrete.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=ZrfMontajHattiTakip.db");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MontajHattiTakip;Integrated Security=true");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Kullanici>().HasData(
+                new Kullanici { Id = 1, Isim = "default", Soyisim = "admin", KullaniciAdi = "admin", Sifre = "admin", YoneticiMi = true },
+                new Kullanici { Id = 2, Isim = "default", Soyisim = "user", KullaniciAdi = "user", Sifre = "user", YoneticiMi = false }
+            );
+            modelBuilder.Entity<Islem>().HasData(
+                new Islem { Id = 1, IslemAdi = "İş Başlangıç" },
+                new Islem { Id = 2, IslemAdi = "İş Bitiş" },
+                new Islem { Id = 3, IslemAdi = "Mola Başlangıç" },
+                new Islem { Id = 4, IslemAdi = "Mola Bitiş" }
+           );
         }
     }
 }

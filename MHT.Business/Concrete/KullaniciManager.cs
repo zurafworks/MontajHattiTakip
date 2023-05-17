@@ -25,6 +25,22 @@ namespace MHT.Business.Concrete
             await _unitOfWork.SaveAsync();
         }
 
+        public async Task<Kullanici> CheckPassword(string userName, string password)
+        {
+            var kullanici = await _unitOfWork.Kullanicilar.GetAsync(u => u.KullaniciAdi == userName && u.IsDeleted== false);
+            if (kullanici != null || kullanici.Sifre == password)
+            {
+                var girisYapan = new Kullanici();
+                girisYapan.Isim = kullanici.Isim;
+                girisYapan.Soyisim = kullanici.Soyisim;
+                girisYapan.Id = kullanici.Id;
+                girisYapan.YoneticiMi = kullanici.YoneticiMi;
+                return girisYapan;
+            }
+            return null;
+
+        }
+
         public async Task<IList<KullaniciDto>> GetAllAsync()
         {
             var query = from k in _unitOfWork.Kullanicilar.GetAllAsync(k => !k.IsDeleted).Result

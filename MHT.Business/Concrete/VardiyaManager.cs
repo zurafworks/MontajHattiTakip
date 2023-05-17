@@ -26,6 +26,16 @@ namespace MHT.Business.Concrete
             await _unitOfWork.SaveAsync();
         }
 
+        public async Task<Vardiya> CheckActive(int userId, int islemId)
+        {
+            var vardiya = await _unitOfWork.Vardiyalar.GetAsync(x => x.KullaniciId == userId, x=>x.IslemId == islemId, x=>x.IsActive == true);
+            if(vardiya != null )
+            {
+                return vardiya;
+            }
+            return null;
+        }
+
         public async Task<IList<VardiyaDto>> GetAllAsync()
         {
             return await _unitOfWork.Vardiyalar.GetAllVardiyaDto().ToListAsync();
