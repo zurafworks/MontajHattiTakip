@@ -32,6 +32,7 @@
             this.btnEmployeeOperations = new System.Windows.Forms.Button();
             this.btnMachineOperations = new System.Windows.Forms.Button();
             this.fpGraphicView = new ScottPlot.FormsPlot();
+            this.btnLogs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmployeeOperations
@@ -72,7 +73,7 @@
             this.btnMachineOperations.TabIndex = 2;
             this.btnMachineOperations.Text = "Makine\r\nİşlemleri";
             this.btnMachineOperations.UseVisualStyleBackColor = false;
-            this.btnMachineOperations.Click += new System.EventHandler(this.btnEmployeeOperations_Click);
+            this.btnMachineOperations.Click += new System.EventHandler(this.btnMachineOperations_Click);
             // 
             // fpGraphicView
             // 
@@ -86,6 +87,26 @@
             this.fpGraphicView.Size = new System.Drawing.Size(834, 477);
             this.fpGraphicView.TabIndex = 3;
             // 
+            // btnLogs
+            // 
+            this.btnLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogs.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogs.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogs.BackgroundImage")));
+            this.btnLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogs.FlatAppearance.BorderSize = 0;
+            this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogs.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogs.ForeColor = System.Drawing.Color.White;
+            this.btnLogs.Location = new System.Drawing.Point(1012, 467);
+            this.btnLogs.Name = "btnLogs";
+            this.btnLogs.Size = new System.Drawing.Size(181, 77);
+            this.btnLogs.TabIndex = 2;
+            this.btnLogs.Text = "Kayıtlar";
+            this.btnLogs.UseVisualStyleBackColor = false;
+            this.btnLogs.Click += new System.EventHandler(this.btnLogs_Click);
+            // 
             // ManagerHomePageUI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -94,6 +115,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.fpGraphicView);
+            this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.btnMachineOperations);
             this.Controls.Add(this.btnEmployeeOperations);
             this.DoubleBuffered = true;
@@ -111,5 +133,6 @@
         private Button btnEmployeeOperations;
         private Button btnMachineOperations;
         private ScottPlot.FormsPlot fpGraphicView;
+        private Button btnLogs;
     }
 }

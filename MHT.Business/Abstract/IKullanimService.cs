@@ -14,5 +14,7 @@ namespace MHT.Business.Abstract
         public Task<IList<KullanimDto>> GetAllAsync();
         public Task AddAsync(Kullanim kullanim);
         public Task UpdateAsync(Kullanim kullanim);
+        public Task<Kullanim> CheckActive(int makineId, bool status);
+        public Task<IList<MakineKullanimDto>> GetMakineKullanimListesi();
     }
 }

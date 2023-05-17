@@ -21,6 +21,8 @@ namespace ZrfMusteriTakip.FormUI
     {
         private static int employeeId;
         private static int selectedMachine;
+        private static int selectedUsing;
+        private static string selectedMachineText;
 
         private readonly IIslemService _islemService;
         private readonly IKullanimService _kullanimService;
@@ -48,7 +50,7 @@ namespace ZrfMusteriTakip.FormUI
             GetDatasToGrid();
 
             //Tüm makineler dropdown'a eklenmeli
-            var makineler = await _makineService.GetAllAsync();
+            var makineler =  _makineService.GetAllAsync();
             for(int i = 0; i < makineler.Count; i++)
             {
                 drpdwnSelectedVeri.Items.Add(makineler[i].MakineAdi);
@@ -78,7 +80,8 @@ namespace ZrfMusteriTakip.FormUI
         private async void drpdwnSelectedVeri_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Seçim değiştiğinde ilgili makinenin idsini almalıyız muhtemelen getbyname ile iyi olabilir.
-            selectedMachine = await _makineService.GetByName(drpdwnSelectedVeri.SelectedText);
+
+            selectedMachineText = drpdwnSelectedVeri.Text;
         }
 
         private void drpdwnSelectedVeri_MouseClick(object sender, MouseEventArgs e)
@@ -113,8 +116,10 @@ namespace ZrfMusteriTakip.FormUI
                 newVardiya.KullaniciId = employeeId;
                 newVardiya.IslemId = 1;
                 newVardiya.IslemSaati = DateTime.Now;
+                newVardiya.IsActive = true;
 
                 await _vardiyaService.AddAsync(newVardiya);
+                MessageBox.Show("Vardiya başladı!");
             }
             else
             {
@@ -137,18 +142,18 @@ namespace ZrfMusteriTakip.FormUI
             }
             else
             {
-                var editVardiya = new Vardiya();
-                editVardiya.Id =checkStart.Id;
-                editVardiya.IsActive = false;
-                _vardiyaService.UpdateAsync(editVardiya);
+                
+                checkStart.IsActive = false;
+                _vardiyaService.UpdateAsync(checkStart);
 
                 var newVardiya = new Vardiya();
                 newVardiya.KullaniciId = employeeId;
                 newVardiya.IslemId = 2;
                 newVardiya.IslemSaati = DateTime.Now;
-
+                newVardiya.IsActive = false;
                 await _vardiyaService.AddAsync(newVardiya);
 
+                MessageBox.Show("Vardiya tamamlandı!");
             }
 
         }
@@ -165,8 +170,11 @@ namespace ZrfMusteriTakip.FormUI
                 newVardiya.KullaniciId = employeeId;
                 newVardiya.IslemId = 3;
                 newVardiya.IslemSaati = DateTime.Now;
-
+                newVardiya.IsActive = true;
                 await _vardiyaService.AddAsync(newVardiya);
+
+
+                MessageBox.Show("Mola başladı!");
             }
             else
             {
@@ -187,35 +195,76 @@ namespace ZrfMusteriTakip.FormUI
             }
             else
             {
-                var editVardiya = new Vardiya();
-                editVardiya.Id = checkStart.Id;
-                editVardiya.IsActive = false;
-                _vardiyaService.UpdateAsync(editVardiya);
+                checkStart.IsActive = false;
+                _vardiyaService.UpdateAsync(checkStart);
 
                 var newVardiya = new Vardiya();
                 newVardiya.KullaniciId = employeeId;
                 newVardiya.IslemId = 4;
                 newVardiya.IslemSaati = DateTime.Now;
-
+                newVardiya.IsActive = false;
                 await _vardiyaService.AddAsync(newVardiya);
 
+                MessageBox.Show("Mola tamamlandı!");
             }
         }
 
-        private void btnUseStart_Click(object sender, EventArgs e)
+        private async void btnUseStart_Click(object sender, EventArgs e)
         {
             //dropdowndan seçili makine alınacak. seçili makineye ait aktif kullanım yoksa yeni bir kullanım eklenecek
 
+            selectedMachine = await _makineService.GetByName(selectedMachineText);
+            var isUsed = await _kullanimService.CheckActive(selectedMachine , true);
+
+            if(isUsed == null)
+            {
+                var newKullanim = new Kullanim();
+                newKullanim.KullaniciId = employeeId;
+                newKullanim.MakineId = selectedMachine;
+                newKullanim.Aciklama = rtbxAciklama.Text;
+                newKullanim.Baslangic = DateTime.Now;
+                newKullanim.IsActive = true;
+
+                _kullanimService.AddAsync(newKullanim);
+
+                GetDatasToGrid();
+
+                MessageBox.Show("Kullanım Başladı!");
+            }
+            else
+            {
+                var currentUser = await _kullaniciService.GetAsync(isUsed.KullaniciId);
+                MessageBox.Show(drpdwnSelectedVeri.Text + " zaten " + currentUser.Isim + " " + currentUser.Soyisim + " tarafından kullanılıyor. Lütfen bitmesini bekleyin!");
+            }
         }
 
-        private void btnUseEnd_Click(object sender, EventArgs e)
+        private async void btnUseEnd_Click(object sender, EventArgs e)
         {
             //datagridde seçili bir kullanım olup olmadığı kontrol edilecek. eğer seçilmişse bitiş saati eklenip aktifliği false yapılacak
+            if (dgwVeriler.SelectedRows.Count == 1)
+            {
+                int selectedrowindex = dgwVeriler.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgwVeriler.Rows[selectedrowindex];
+                selectedUsing = Convert.ToInt32(selectedRow.Cells["Id"].Value);
+
+                var updateUse = await _kullanimService.GetAsync(selectedUsing);
+                updateUse.Bitis = DateTime.Now;
+                updateUse.IsActive = false;
+
+                await _kullanimService.UpdateAsync(updateUse);
+                MessageBox.Show("Kullanım Tamamlandı!");
+                GetDatasToGrid();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen bitirmek istediğiniz kullanımı seçiniz");
+            }
         }
 
         public async void GetDatasToGrid()
         {
-            //datagridview'a sadece kullanımdaki makineler eklenmeli
+            var data = await _kullanimService.GetAllAsync();
+            dgwVeriler.DataSource = data;
         }
     }
 }

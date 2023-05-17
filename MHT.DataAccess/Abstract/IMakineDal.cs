@@ -1,4 +1,6 @@
-﻿using MHT.Entity.Entities;
+﻿using MHT.DataAccess.Concrete.Contexts;
+using MHT.Entity.DTOs;
+using MHT.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,6 @@ namespace MHT.DataAccess.Abstract
 {
     public interface IMakineDal:IEntityRepository<Makine>
     {
+        public List<MakineDto> GetMakineDtos();
     }
 }

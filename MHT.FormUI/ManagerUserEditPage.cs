@@ -15,10 +15,11 @@ namespace ZrfMusteriTakip.FormUI
     public partial class ManagerUserEditPageUI : Form
     {
         private readonly IKullaniciService _userService;
-        
-        public ManagerUserEditPageUI(IKullaniciService userService)
+        private readonly ManagerOpeartionsPageUI _operationsPage;
+        public ManagerUserEditPageUI(IKullaniciService userService, ManagerOpeartionsPageUI opeartionsPage)
         {
             _userService = userService;
+            _operationsPage = opeartionsPage;
             InitializeComponent();
         }
 
@@ -37,14 +38,25 @@ namespace ZrfMusteriTakip.FormUI
                 {
                     //ekleme metodu
                     await _userService.AddAsync(entity);
+                    MessageBox.Show("Başarıyla eklendi!");
+                    ClrTbx();
                 }
                 if (ManagerOpeartionsPageUI.editOpen == true)
                 {
                     //güncelleme metodu
                     entity.Id = ManagerOpeartionsPageUI.selectedData;
-                    await _userService.UpdateAsync(entity);
+                    var kullanici = await _userService.GetAsync(entity.Id);
+                    kullanici.KullaniciAdi = tbxUsername.Text;
+                    kullanici.IsDeleted = false;
+                    kullanici.Isim = tbxUsername.Text;
+                    kullanici.Sifre = tbxPassword.Text;
+                    kullanici.Soyisim = tbxSoyisim.Text;
+                    kullanici.YoneticiMi = cbxIsManager.Checked;
+                    await _userService.UpdateAsync(kullanici);
                     ManagerOpeartionsPageUI.selectedData = -1;
+                    MessageBox.Show("Başarıyla güncellendi!");
                 }
+                _operationsPage.GetDatasToGrid();
             }
             else
             {
@@ -92,6 +104,7 @@ namespace ZrfMusteriTakip.FormUI
                 tbxIsim.Text = user.Isim;
                 tbxSoyisim.Text = user.Soyisim;
                 tbxUsername.Text = user.KullaniciAdi;
+                cbxIsManager.Checked = user.YoneticiMi;
             }
         }
     }

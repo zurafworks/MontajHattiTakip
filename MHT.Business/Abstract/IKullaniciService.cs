@@ -11,7 +11,7 @@ namespace MHT.Business.Abstract
     public interface IKullaniciService
     {
         public Task<Kullanici> GetAsync(int id);
-        public Task<IList<KullaniciDto>> GetAllAsync();
+        public IList<KullaniciDto> GetAllAsync();
         public Task AddAsync(Kullanici kullanici);
         public Task UpdateAsync(Kullanici kullanici);
         public Task<Kullanici> CheckPassword(string userName, string password);

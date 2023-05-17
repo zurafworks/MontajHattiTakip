@@ -56,12 +56,12 @@ namespace ZrfMusteriTakip.FormUI
                 addOpen = true;
                 if (ManagerHomePageUI.IsUser == true)
                 {
-                    ManagerUserEditPageUI managerUserEditPageUI = new ManagerUserEditPageUI(_userService);
+                    ManagerUserEditPageUI managerUserEditPageUI = new ManagerUserEditPageUI(_userService, this);
                     managerUserEditPageUI.Show();
                 }
                 if (ManagerHomePageUI.IsUser == false)
                 {
-                    ManagerMachineEditPageUI managerMachineEditPageUI = new ManagerMachineEditPageUI(_makineService);
+                    ManagerMachineEditPageUI managerMachineEditPageUI = new ManagerMachineEditPageUI(_makineService,this);
                     managerMachineEditPageUI.Show();
                 }
             }
@@ -82,13 +82,13 @@ namespace ZrfMusteriTakip.FormUI
                     if (ManagerHomePageUI.IsUser == true)
                     {
                         //güncelleme için seçilen veriler de ekrana yansıyacak
-                        ManagerUserEditPageUI managerUserEditPageUI = new ManagerUserEditPageUI(_userService);
+                        ManagerUserEditPageUI managerUserEditPageUI = new ManagerUserEditPageUI(_userService, this);
                         managerUserEditPageUI.Show();
 
                     }
                     if (ManagerHomePageUI.IsUser == false)
                     {
-                        ManagerMachineEditPageUI managerMachineEditPageUI = new ManagerMachineEditPageUI(_makineService);
+                        ManagerMachineEditPageUI managerMachineEditPageUI = new ManagerMachineEditPageUI(_makineService,this);
                         managerMachineEditPageUI.Show();
                     }
                     dgwVeriler.ClearSelection();
@@ -115,14 +115,14 @@ namespace ZrfMusteriTakip.FormUI
                     if (ManagerHomePageUI.IsUser == true)
                     {
                         //detay için seçilen veriler operasyon türüne göre ekrana yansıyacak
-                        ManagerUserEditPageUI managerDetailPageUI = new ManagerUserEditPageUI(_userService);
+                        ManagerUserEditPageUI managerDetailPageUI = new ManagerUserEditPageUI(_userService, this);
                         managerDetailPageUI.Show();
 
                     }
                     if (ManagerHomePageUI.IsUser == false)
                     {
                         //detay için seçilen veriler operasyon türüne göre ekrana yansıyacak
-                        ManagerMachineEditPageUI managerDetailPageUI = new ManagerMachineEditPageUI(_makineService);
+                        ManagerMachineEditPageUI managerDetailPageUI = new ManagerMachineEditPageUI(_makineService, this);
                         managerDetailPageUI.Show();
                     }
                     dgwVeriler.ClearSelection();
@@ -181,6 +181,8 @@ namespace ZrfMusteriTakip.FormUI
                     }
                     selectedData = -1;
                     dgwVeriler.ClearSelection();
+                    MessageBox.Show("Başarıyla Silindi");
+                    GetDatasToGrid();
                 }
             }
             else
@@ -195,12 +197,12 @@ namespace ZrfMusteriTakip.FormUI
             if (ManagerHomePageUI.IsUser == true)
             {
                 //datagridwiev'a user dataları basılacak
-                var data = await _userService.GetAllAsync();
+                var data = _userService.GetAllAsync();
                 dgwVeriler.DataSource = data;
             }
             if (ManagerHomePageUI.IsUser == false)
             {
-                var data = await _makineService.GetAllAsync();
+                var data =  _makineService.GetAllAsync();
                 dgwVeriler.DataSource = data;
                 //datagridview'a machine dataları basılacak
             }
@@ -211,13 +213,13 @@ namespace ZrfMusteriTakip.FormUI
             if (ManagerHomePageUI.IsUser == true)
             {
                 //userSearch
-                var list = await _userService.GetAllAsync();
+                var list = _userService.GetAllAsync();
                 list = list.Where(k=>k.Isim.Trim().ToLower()
                 .Contains(tbxSearch.Text.Trim().ToLower())).Take(50).ToList();
             }
             if (ManagerHomePageUI.IsUser == false)
             {
-                var list = await _makineService.GetAllAsync();
+                var list =  _makineService.GetAllAsync();
                 list = list.Where(m=>m.MakineAdi.Trim().ToLower()
                 .Contains(tbxSearch.Text.Trim().ToLower())).Take(50).ToList();
                 //machineSearch

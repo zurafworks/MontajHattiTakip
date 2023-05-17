@@ -41,20 +41,23 @@ namespace MHT.Business.Concrete
 
         }
 
-        public async Task<IList<KullaniciDto>> GetAllAsync()
+        public IList<KullaniciDto> GetAllAsync()
         {
-            var query = from k in _unitOfWork.Kullanicilar.GetAllAsync(k => !k.IsDeleted).Result
-                        select new KullaniciDto
-                        {
-                            Id = k.Id,
-                            Isim = k.Isim,
-                            KullaniciAdi = k.KullaniciAdi,
-                            Sifre = k.Sifre,
-                            Soyisim = k.Soyisim,
-                            YoneticiMi = k.YoneticiMi,
-                        };
-            return  query.ToList();
+            //var list = _unitOfWork.Kullanicilar.GetAllAsync(k => !k.IsDeleted).Result.ToList();
+            //var query = from k in list
+            //            select new KullaniciDto
+            //            {
+            //                Id = k.Id,
+            //                Isim = k.Isim,
+            //                KullaniciAdi = k.KullaniciAdi,
+            //                Sifre = k.Sifre,
+            //                Soyisim = k.Soyisim,
+            //                YoneticiMi = k.YoneticiMi,
+            //            };
+            //return  query.ToList();
 
+            var list = _unitOfWork.Kullanicilar.GetKullaniciDtos();
+            return list;
         }
 
         public async Task<Kullanici> GetAsync(int id)
@@ -64,7 +67,8 @@ namespace MHT.Business.Concrete
 
         public async Task UpdateAsync(Kullanici kullanici)
         {
-            await _unitOfWork.Kullanicilar.UpdateAsync(kullanici);
+
+            _unitOfWork.Kullanicilar.UpdateWithStateAsync(kullanici);
             await _unitOfWork.SaveAsync();
         }
     }

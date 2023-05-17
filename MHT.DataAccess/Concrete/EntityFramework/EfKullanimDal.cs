@@ -27,7 +27,7 @@ namespace MHT.DataAccess.Concrete.EntityFramework
                             on k.MakineId equals m.Id
                             join kk in context.Kullanicilar
                             on k.KullaniciId equals kk.Id
-                            where k.IsDeleted == true
+                            where k.IsActive == true
                             select new KullanimDto
                             {
                                 Id = k.Id,
@@ -42,5 +42,42 @@ namespace MHT.DataAccess.Concrete.EntityFramework
                 return query.ToList();
             }
         }
+
+        public IList<MakineKullanimDto> GetMakineKullanimListesi()
+        {
+            using (var context = new MhtContext())
+            {
+                var makineKullanimListesi = context.Makineler
+            .Where(makine => makine.Isdeleted == false) // Sadece IsDeleted false olan makineleri getir
+            .GroupJoin(context.Kullanimlar,
+                makine => makine.Id,
+                kullanim => kullanim.MakineId,
+                (makine, kullanimlar) => new { Makine = makine, Kullanimlar = kullanimlar })
+            .ToList();
+
+                var groupedMakineKullanim = new List<MakineKullanimDto>();
+
+                foreach (var makineKullanim in makineKullanimListesi)
+                {
+                    double kullanimSuresi = 0;
+
+                    foreach (var kullanim in makineKullanim.Kullanimlar)
+                    {
+                        kullanimSuresi += kullanim.Bitis != null ? (kullanim.Bitis.Value - kullanim.Baslangic).TotalHours : (DateTime.UtcNow - kullanim.Baslangic).TotalHours;
+                    }
+
+                    var makineKullanimDto = new MakineKullanimDto
+                    {
+                        MakineAdi = makineKullanim.Makine.MakineAdi,
+                        KullanımSuresi = kullanimSuresi
+                    };
+
+                    groupedMakineKullanim.Add(makineKullanimDto);
+                }
+
+                return groupedMakineKullanim;
+            }
+        }
     }
 }
+

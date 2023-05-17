@@ -5,6 +5,7 @@ using MHT.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,16 @@ namespace MHT.Business.Concrete
             await _unitofwork.SaveAsync();
         }
 
+        public async Task<Kullanim> CheckActive(int makineId,bool status)
+        {
+            var kullanim = await _unitofwork.Kullanimlar.GetAsync(x => x.MakineId == makineId && x.IsActive == status);
+            if(kullanim != null)
+            {
+                return kullanim;
+            }
+            return null;
+        }
+
         public async Task<IList<KullanimDto>> GetAllAsync()
         {
             return _unitofwork.Kullanimlar.GetAllKullanimDto();
@@ -38,6 +49,11 @@ namespace MHT.Business.Concrete
         {
             await _unitofwork.Kullanimlar.UpdateAsync(kullanim);
             await _unitofwork.SaveAsync();
+        }
+
+        public async Task<IList<MakineKullanimDto>> GetMakineKullanimListesi()
+        {
+            return _unitofwork.Kullanimlar.GetMakineKullanimListesi();
         }
     }
 }

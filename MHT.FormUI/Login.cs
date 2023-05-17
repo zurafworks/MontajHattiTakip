@@ -26,31 +26,38 @@ namespace ZrfMusteriTakip.FormUI
 
         private async void onClick_girisYap(object sender, EventArgs e)
         {
-            var userName = tbxUsername.Text;
-            var password = tbxPassword.Text;
-
-            var girisYapan = await _kullaniciService.CheckPassword(userName, password);
-            //Kontroller YöneticiMi ile yapýlacak current id de deðiþtirilecek gelen veriye göre
-            if(girisYapan.Id != null)
+            if(tbxUsername.Text != "" && tbxPassword.Text != "")
             {
-                currentId = girisYapan.Id;
-                if (girisYapan.YoneticiMi == true)
+                var userName = tbxUsername.Text;
+                var password = tbxPassword.Text;
+
+                var girisYapan = await _kullaniciService.CheckPassword(userName, password);
+                //Kontroller YöneticiMi ile yapýlacak current id de deðiþtirilecek gelen veriye göre
+                if (girisYapan.Id != null)
                 {
-                    ManagerHomePageUI managerHomePageUI = new ManagerHomePageUI();
-                    managerHomePageUI.Show();
-                    this.Hide();
+                    currentId = girisYapan.Id;
+                    if (girisYapan.YoneticiMi == true)
+                    {
+                        ManagerHomePageUI managerHomePageUI = new ManagerHomePageUI(_kullaniciService, _makineService, _kullanimService, _vardiyaService);
+                        managerHomePageUI.Show();
+                        this.Hide();
+                    }
+                    else if (girisYapan.YoneticiMi == false)
+                    {
+                        EmployeeOperationsPageUI employeeOperationsPageUI = new EmployeeOperationsPageUI(_islemService, _kullanimService, _vardiyaService, _kullaniciService, _makineService);
+                        employeeOperationsPageUI.Show();
+                        this.Hide();
+                    }
                 }
-                else if (girisYapan.YoneticiMi == false)
+                else
                 {
-                    EmployeeOperationsPageUI employeeOperationsPageUI = new EmployeeOperationsPageUI(_islemService, _kullanimService, _vardiyaService, _kullaniciService, _makineService);
-                    employeeOperationsPageUI.Show();
-                    this.Hide();
+                    ClrTbx();
+                    MessageBox.Show("Giriþ baþarýsýz, lütfen tekrar deneyin.", "Yetkisiz Eriþim");
                 }
             }
             else
             {
-                ClrTbx();
-                MessageBox.Show("Giriþ baþarýsýz, lütfen tekrar deneyin.", "Yetkisiz Eriþim");
+                MessageBox.Show("Lütfen gerekli alanlarý doldurun");
             }
             
         }

@@ -41,6 +41,7 @@
             this.btnUseEnd = new System.Windows.Forms.Button();
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.lblSurname = new System.Windows.Forms.Label();
+            this.rtbxAciklama = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVeriler)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,6 +260,18 @@
             this.lblSurname.TabIndex = 14;
             this.lblSurname.Text = "Soyisim";
             // 
+            // rtbxAciklama
+            // 
+            this.rtbxAciklama.BackColor = System.Drawing.Color.DarkBlue;
+            this.rtbxAciklama.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbxAciklama.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rtbxAciklama.ForeColor = System.Drawing.SystemColors.Window;
+            this.rtbxAciklama.Location = new System.Drawing.Point(493, 50);
+            this.rtbxAciklama.Name = "rtbxAciklama";
+            this.rtbxAciklama.Size = new System.Drawing.Size(674, 62);
+            this.rtbxAciklama.TabIndex = 19;
+            this.rtbxAciklama.Text = "Açıklama";
+            // 
             // EmployeeOperationsPageUI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -266,6 +279,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.rtbxAciklama);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.lblEmployeeName);
@@ -305,5 +319,6 @@
         private Button btnUseEnd;
         private Label lblEmployeeName;
         private Label lblSurname;
+        private RichTextBox rtbxAciklama;
     }
 }

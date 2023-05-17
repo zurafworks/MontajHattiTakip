@@ -89,7 +89,7 @@ namespace zurafworks.Shared.Data.Concrete.EntityFramework
                     query = query.Include(includeProperty);
                 }
             }
-            return await query.SingleOrDefaultAsync(); ;
+            return await query.SingleOrDefaultAsync();
         }
 
         public void Update(TEntity Entity)

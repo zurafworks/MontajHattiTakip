@@ -11,7 +11,7 @@ namespace MHT.Business.Abstract
     public interface IMakineService
     {
         public Task<Makine> GetAsync(int id);
-        public Task<IList<MakineDto>> GetAllAsync();
+        public IList<MakineDto> GetAllAsync();
         public Task AddAsync(Makine makine);
         public Task UpdateAsync(Makine makine);
         public Task<int> GetByName(string makineAdi);

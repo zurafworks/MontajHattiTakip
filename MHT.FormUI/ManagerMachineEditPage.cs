@@ -15,9 +15,11 @@ namespace ZrfMusteriTakip.FormUI
     public partial class ManagerMachineEditPageUI : Form
     {
         private readonly IMakineService _makineService;
-        public ManagerMachineEditPageUI(IMakineService makineService)
+        private readonly ManagerOpeartionsPageUI _managerOpeartionsPage;
+        public ManagerMachineEditPageUI(IMakineService makineService, ManagerOpeartionsPageUI managerOpeartionsPage)
         {
             _makineService = makineService;
+            _managerOpeartionsPage = managerOpeartionsPage;
             InitializeComponent();
         }
 
@@ -30,15 +32,21 @@ namespace ZrfMusteriTakip.FormUI
                 if(ManagerOpeartionsPageUI.addOpen == true)
                 {
                     await _makineService.AddAsync(entity);
+                    MessageBox.Show("Başarıyla Eklendi");
+                    ClrTbx();
                     //ekleme metodu
                 }
                 if(ManagerOpeartionsPageUI.editOpen == true)
                 {
                     //güncelleme metodu
                     entity.Id = ManagerOpeartionsPageUI.selectedData;
-                    await _makineService.UpdateAsync(entity);
+                    var makine = await _makineService.GetAsync(entity.Id);
+                    makine.MakineAdi = tbxMakineIsim.Text;
+                    await _makineService.UpdateAsync(makine);
                     ManagerOpeartionsPageUI.selectedData = -1;
+                    MessageBox.Show("Başarıyla Güncellendi");
                 }
+                _managerOpeartionsPage.GetDatasToGrid();
             }
             else
             {

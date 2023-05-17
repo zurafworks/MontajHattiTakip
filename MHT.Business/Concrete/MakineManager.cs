@@ -25,15 +25,11 @@ namespace MHT.Business.Concrete
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IList<MakineDto>> GetAllAsync()
+        public IList<MakineDto> GetAllAsync()
         {
-            var query = from m in _unitOfWork.Makinaler.GetAllAsync(m => !m.Isdeleted).Result.ToList()
-                        select new MakineDto
-                        {
-                            Id = m.Id,
-                            MakineAdi = m.MakineAdi
-                        };
-            return query.ToList();
+
+            var list = _unitOfWork.Makinaler.GetMakineDtos();
+            return list;
         }
 
         public async Task<Makine> GetAsync(int id)
@@ -49,7 +45,7 @@ namespace MHT.Business.Concrete
 
         public async Task UpdateAsync(Makine makine)
         {
-            await _unitOfWork.Makinaler.UpdateAsync(makine);
+            _unitOfWork.Makinaler.UpdateWithStateAsync(makine);
             await _unitOfWork.SaveAsync();
         }
     }

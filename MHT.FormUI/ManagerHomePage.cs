@@ -1,5 +1,7 @@
 ﻿//using Autofac;
 //using Microsoft.AspNetCore.Mvc.Rendering;
+using MHT.Business.Abstract;
+using MHT.Entity.DTOs;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -23,12 +25,22 @@ namespace ZrfMusteriTakip.FormUI
         //Sayfaların açık olup olmamasının kontrolü
         public static bool userOpen = false;
         public static bool machineOpen = false;
+        public static bool logOpen = false;
 
         //sayfanın kullanıcı ile ilgili mi yoksa makine ile ilgili mi açıldığının kontrolü
         public static bool IsUser;
-       
-        public ManagerHomePageUI()
+
+        private readonly IKullaniciService _kullaniciService;
+        private readonly IMakineService _makineService;
+        private readonly IKullanimService _kullanimService;
+        private readonly IVardiyaService _vardiyaService;
+        public ManagerHomePageUI(IKullaniciService kullaniciService,IMakineService makineService, IKullanimService kullanimService, IVardiyaService vardiyaService)
         {
+            _kullaniciService = kullaniciService;
+            _makineService = makineService;
+            _kullanimService = kullanimService;
+            _vardiyaService = vardiyaService;
+
             InitializeComponent();
         }
 
@@ -41,6 +53,24 @@ namespace ZrfMusteriTakip.FormUI
             this.Size = new Size(1280, 720);
 
             //grafiğe makine kullanım verileri basılacak makine - toplam saat
+
+            // Grafiği oluştur
+            IList<MakineKullanimDto> makineKullanimListesi = await _kullanimService.GetMakineKullanimListesi();
+
+            var xLabels = makineKullanimListesi.Select(m => m.MakineAdi).ToArray();
+            var yValues = makineKullanimListesi.Select(m => m.KullanımSuresi).ToArray();
+
+            var xValues = Enumerable.Range(0, xLabels.Length).Select(i => (double)i).ToArray();
+
+            fpGraphicView.plt.PlotBar(xValues, yValues);
+
+            // x ekseni etiketlerini ayarla
+            fpGraphicView.plt.XTicks(xValues, xLabels);
+
+            // Grafiği güncelle
+            fpGraphicView.Render();
+
+
         }
 
         private void btnEmployeeOperations_Click(object sender, EventArgs e)
@@ -48,7 +78,7 @@ namespace ZrfMusteriTakip.FormUI
             if (userOpen == false)
             {
                 IsUser = true;
-                ManagerOpeartionsPageUI employeeOpeartionsUI = new ManagerOpeartionsPageUI();
+                ManagerOpeartionsPageUI employeeOpeartionsUI = new ManagerOpeartionsPageUI(_kullaniciService, _makineService);
                 employeeOpeartionsUI.Show();
                 userOpen = true;
             }
@@ -61,7 +91,7 @@ namespace ZrfMusteriTakip.FormUI
             if (machineOpen == false)
             {
                 IsUser = false;
-                ManagerOpeartionsPageUI machineOpeartionsUI = new ManagerOpeartionsPageUI();
+                ManagerOpeartionsPageUI machineOpeartionsUI = new ManagerOpeartionsPageUI(_kullaniciService, _makineService);
                 machineOpeartionsUI.Show();
                 machineOpen = true;
             }
@@ -78,6 +108,15 @@ namespace ZrfMusteriTakip.FormUI
             }
 
             Environment.Exit(0);
+        }
+
+        private void btnLogs_Click(object sender, EventArgs e)
+        {
+            if(logOpen== false)
+            {
+                ManagerLogsPageUI managerLogsPageUI = new ManagerLogsPageUI(_kullanimService, _vardiyaService);
+                managerLogsPageUI.Show();
+            }
         }
     }
 }
