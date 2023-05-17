@@ -52,11 +52,17 @@ namespace ZrfMusteriTakip.FormUI
 
         public async void GetDatasToGrid()
         {
-            var vardiyaData = _vardiyaService.GetAllAsync();
+            var vardiyaData = await _vardiyaService.GetAllAsync();
             dgwVardiyaVeriler.DataSource = vardiyaData;
+            dgwVardiyaVeriler.Columns["id"].Visible = false;
+            dgwVardiyaVeriler.Columns["IsActive"].Visible = false;
+            dgwVardiyaVeriler.RowHeadersVisible = false;
 
-            var kullanimData = _kullanimService.GetAllAsync();
+            var kullanimData = await _kullanimService.GetCompAllAsync();
             dgwKullanımVeriler.DataSource = kullanimData;
+            dgwKullanımVeriler.Columns["id"].Visible = false;
+            dgwKullanımVeriler.Columns["IsActive"].Visible = false;
+            dgwKullanımVeriler.RowHeadersVisible = false;
         }
 
         

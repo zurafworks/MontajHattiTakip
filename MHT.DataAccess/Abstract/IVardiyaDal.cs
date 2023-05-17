@@ -11,6 +11,6 @@ namespace MHT.DataAccess.Abstract
 {
     public interface IVardiyaDal:IEntityRepository<Vardiya>
     {
-        IQueryable<VardiyaDto> GetAllVardiyaDto();
+        List<VardiyaDto> GetAllVardiyaDto();
     }
 }

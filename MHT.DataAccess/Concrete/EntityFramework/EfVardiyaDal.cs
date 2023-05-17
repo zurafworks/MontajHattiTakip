@@ -19,7 +19,7 @@ namespace MHT.DataAccess.Concrete.EntityFramework
         {
         }
 
-        public IQueryable<VardiyaDto> GetAllVardiyaDto()
+        public List<VardiyaDto> GetAllVardiyaDto()
         {
             using (MhtContext context = new MhtContext())
             {
@@ -34,10 +34,9 @@ namespace MHT.DataAccess.Concrete.EntityFramework
                                 IslemAd = i.IslemAdi,
                                 KullaniciIsim = k.Isim,
                                 KullaniciSoyisim = k.Soyisim,
-                                IslemSaati = v.IslemSaati,
-                                IsActive = v.IsActive
+                                IslemSaati = v.IslemSaati
                             };
-                return query;
+                return query.ToList();
             }
         }
     }

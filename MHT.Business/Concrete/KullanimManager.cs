@@ -40,6 +40,11 @@ namespace MHT.Business.Concrete
             return _unitofwork.Kullanimlar.GetAllKullanimDto();
         }
 
+        public async Task<IList<KullanimDto>> GetCompAllAsync()
+        {
+            return _unitofwork.Kullanimlar.GetCompletelyAllKullanimDto();
+        }
+
         public async Task<Kullanim> GetAsync(int id)
         {
             return await _unitofwork.Kullanimlar.GetAsync(x => x.Id == id);

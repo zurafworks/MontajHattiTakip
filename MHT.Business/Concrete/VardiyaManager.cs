@@ -38,7 +38,7 @@ namespace MHT.Business.Concrete
 
         public async Task<IList<VardiyaDto>> GetAllAsync()
         {
-            var vardiyalar = await _unitOfWork.Vardiyalar.GetAllVardiyaDto().ToListAsync();
+            var vardiyalar = _unitOfWork.Vardiyalar.GetAllVardiyaDto();
             return vardiyalar;
         }
 

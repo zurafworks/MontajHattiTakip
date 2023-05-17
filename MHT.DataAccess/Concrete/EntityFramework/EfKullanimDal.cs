@@ -43,6 +43,30 @@ namespace MHT.DataAccess.Concrete.EntityFramework
             }
         }
 
+        public IList<KullanimDto> GetCompletelyAllKullanimDto()
+        {
+            using (MhtContext context = new MhtContext())
+            {
+                var query = from k in context.Kullanimlar
+                            join m in context.Makineler
+                            on k.MakineId equals m.Id
+                            join kk in context.Kullanicilar
+                            on k.KullaniciId equals kk.Id
+                            select new KullanimDto
+                            {
+                                Id = k.Id,
+                                KullaniciAd = kk.Isim,
+                                MakinaAd = m.MakineAdi,
+                                Aciklama = k.Aciklama,
+                                Baslangic = k.Baslangic,
+                                KullaniciSoyad = kk.Soyisim,
+                                Bitis = k.Bitis,
+                                IsActive = k.IsActive
+                            };
+                return query.ToList();
+            }
+        }
+
         public IList<MakineKullanimDto> GetMakineKullanimListesi()
         {
             using (var context = new MhtContext())

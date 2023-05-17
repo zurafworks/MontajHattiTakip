@@ -12,6 +12,7 @@ namespace MHT.DataAccess.Abstract
     public interface IKullanimDal:IEntityRepository<Kullanim>
     {
         public IList<KullanimDto> GetAllKullanimDto();
+        public IList<KullanimDto> GetCompletelyAllKullanimDto();
         public IList<MakineKullanimDto> GetMakineKullanimListesi();
     }
 }

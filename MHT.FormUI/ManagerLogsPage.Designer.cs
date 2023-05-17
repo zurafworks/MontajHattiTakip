@@ -47,7 +47,7 @@
             this.dgwVardiyaVeriler.Location = new System.Drawing.Point(56, 143);
             this.dgwVardiyaVeriler.Name = "dgwVardiyaVeriler";
             this.dgwVardiyaVeriler.RowTemplate.Height = 25;
-            this.dgwVardiyaVeriler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwVardiyaVeriler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgwVardiyaVeriler.Size = new System.Drawing.Size(329, 403);
             this.dgwVardiyaVeriler.TabIndex = 0;
             // 
@@ -63,7 +63,7 @@
             this.dgwKullanımVeriler.Location = new System.Drawing.Point(464, 143);
             this.dgwKullanımVeriler.Name = "dgwKullanımVeriler";
             this.dgwKullanımVeriler.RowTemplate.Height = 25;
-            this.dgwKullanımVeriler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwKullanımVeriler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgwKullanımVeriler.Size = new System.Drawing.Size(722, 403);
             this.dgwKullanımVeriler.TabIndex = 0;
             // 
