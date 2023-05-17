@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MHT.Business.Abstract;
+using MHT.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace ZrfMusteriTakip.FormUI
 {
     public partial class ManagerUserEditPageUI : Form
     {
+        private readonly IKullaniciService _userService;
         
-        public ManagerUserEditPageUI()
+        public ManagerUserEditPageUI(IKullaniciService userService)
         {
+            _userService = userService;
             InitializeComponent();
         }
 
@@ -22,13 +26,23 @@ namespace ZrfMusteriTakip.FormUI
         {
             if (tbxIsim.Text != "" && tbxSoyisim.Text != "" && tbxUsername.Text != "" && tbxPassword.Text != "")
             {
+                var entity = new Kullanici();
+                entity.KullaniciAdi = tbxUsername.Text;
+                entity.IsDeleted = false;
+                entity.Isim = tbxUsername.Text;
+                entity.Sifre = tbxPassword.Text;
+                entity.Soyisim = tbxSoyisim.Text;
+                entity.YoneticiMi = cbxIsManager.Checked;
                 if (ManagerOpeartionsPageUI.addOpen == true)
                 {
                     //ekleme metodu
+                    await _userService.AddAsync(entity);
                 }
                 if (ManagerOpeartionsPageUI.editOpen == true)
                 {
                     //güncelleme metodu
+                    entity.Id = ManagerOpeartionsPageUI.selectedData;
+                    await _userService.UpdateAsync(entity);
                     ManagerOpeartionsPageUI.selectedData = -1;
                 }
             }
@@ -57,7 +71,7 @@ namespace ZrfMusteriTakip.FormUI
             }
         }
 
-        private void ManagerEditPageUI_Load(object sender, EventArgs e)
+        private async void ManagerEditPageUI_Load(object sender, EventArgs e)
         {
             if(ManagerOpeartionsPageUI.addOpen != true)
             {
@@ -74,6 +88,10 @@ namespace ZrfMusteriTakip.FormUI
             if (ManagerOpeartionsPageUI.selectedData != -1)
             {
                 //selectedData ile verileri getirip erkana basıcaz
+               var user = await _userService.GetAsync(ManagerOpeartionsPageUI.selectedData);
+                tbxIsim.Text = user.Isim;
+                tbxSoyisim.Text = user.Soyisim;
+                tbxUsername.Text = user.KullaniciAdi;
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MHT.Business.Abstract;
+using MHT.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,10 @@ namespace ZrfMusteriTakip.FormUI
 {
     public partial class ManagerMachineEditPageUI : Form
     {
-        
-        public ManagerMachineEditPageUI()
+        private readonly IMakineService _makineService;
+        public ManagerMachineEditPageUI(IMakineService makineService)
         {
+            _makineService = makineService;
             InitializeComponent();
         }
 
@@ -22,13 +25,18 @@ namespace ZrfMusteriTakip.FormUI
         {
             if (tbxMakineIsim.Text != "")
             {
+                var entity = new Makine();
+                entity.MakineAdi = tbxMakineIsim.Text;
                 if(ManagerOpeartionsPageUI.addOpen == true)
                 {
+                    await _makineService.AddAsync(entity);
                     //ekleme metodu
                 }
                 if(ManagerOpeartionsPageUI.editOpen == true)
                 {
                     //güncelleme metodu
+                    entity.Id = ManagerOpeartionsPageUI.selectedData;
+                    await _makineService.UpdateAsync(entity);
                     ManagerOpeartionsPageUI.selectedData = -1;
                 }
             }
@@ -57,7 +65,7 @@ namespace ZrfMusteriTakip.FormUI
             }
         }
 
-        private void ManagerEditPageUI_Load(object sender, EventArgs e)
+        private async void ManagerEditPageUI_Load(object sender, EventArgs e)
         {
             if (ManagerOpeartionsPageUI.addOpen != true)
             {
@@ -69,7 +77,8 @@ namespace ZrfMusteriTakip.FormUI
             }
             if(ManagerOpeartionsPageUI.selectedData != -1)
             {
-                //selectedData ile verileri getirip erkana basıcaz
+                var machine = await _makineService.GetAsync(ManagerOpeartionsPageUI.selectedData);
+                tbxMakineIsim.Text = machine.MakineAdi;
             }
         }
     }
