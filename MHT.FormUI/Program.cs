@@ -27,6 +27,7 @@ namespace MHT.FormUI
             Application.Run(new LoginUI(Container.Resolve<IIslemService>(), Container.Resolve<IKullaniciService>(), Container.Resolve<IKullanimService>(), Container.Resolve<IMakineService>(), Container.Resolve<IVardiyaService>()));
         }
 
+
         static IContainer Configure()
         {
             var builder = new ContainerBuilder();

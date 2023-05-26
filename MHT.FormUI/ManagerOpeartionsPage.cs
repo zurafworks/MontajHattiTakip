@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ZrfMusteriTakip.FormUI
@@ -214,16 +215,25 @@ namespace ZrfMusteriTakip.FormUI
             {
                 //userSearch
                 var list = _userService.GetAllAsync();
-                list = list.Where(k=>k.Isim.Trim().ToLower()
-                .Contains(tbxSearch.Text.Trim().ToLower())).Take(50).ToList();
+                var filteredUsers = list.Where(u =>
+                    u.KullaniciAdi.Contains(tbxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
+                    u.Isim.Trim().ToLower().Contains(tbxSearch.Text.Trim().ToLower()) ||
+                    u.Soyisim.Trim().ToLower().Contains(tbxSearch.Text.Trim().ToLower())
+                ).Take(50).ToList();
+
+                dgwVeriler.DataSource = filteredUsers;
+
             }
             if (ManagerHomePageUI.IsUser == false)
             {
                 var list =  _makineService.GetAllAsync();
                 list = list.Where(m=>m.MakineAdi.Trim().ToLower()
                 .Contains(tbxSearch.Text.Trim().ToLower())).Take(50).ToList();
+
+                dgwVeriler.DataSource = list;
                 //machineSearch
             }
+
             //var list = _userService.GetAllActives().Result.Data.Userlar.ToList();
             //var filteredUserlar = list.Where(u => u.Isim.Contains(tbxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
             //    u.Soyisim.Contains(tbxSearch.Text, StringComparison.OrdinalIgnoreCase) ||
@@ -231,5 +241,9 @@ namespace ZrfMusteriTakip.FormUI
             //dgwVeriler.DataSource = filteredUserlar;
         }
 
+        private void tbxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

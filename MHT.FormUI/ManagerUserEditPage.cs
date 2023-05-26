@@ -30,7 +30,7 @@ namespace ZrfMusteriTakip.FormUI
                 var entity = new Kullanici();
                 entity.KullaniciAdi = tbxUsername.Text;
                 entity.IsDeleted = false;
-                entity.Isim = tbxUsername.Text;
+                entity.Isim = tbxIsim.Text;
                 entity.Sifre = tbxPassword.Text;
                 entity.Soyisim = tbxSoyisim.Text;
                 entity.YoneticiMi = cbxIsManager.Checked;
@@ -48,7 +48,7 @@ namespace ZrfMusteriTakip.FormUI
                     var kullanici = await _userService.GetAsync(entity.Id);
                     kullanici.KullaniciAdi = tbxUsername.Text;
                     kullanici.IsDeleted = false;
-                    kullanici.Isim = tbxUsername.Text;
+                    kullanici.Isim = tbxIsim.Text;
                     kullanici.Sifre = tbxPassword.Text;
                     kullanici.Soyisim = tbxSoyisim.Text;
                     kullanici.YoneticiMi = cbxIsManager.Checked;

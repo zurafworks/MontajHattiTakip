@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHT.DataAccess", "MHT.DataAccess\MHT.DataAccess.csproj", "{ED7FB664-3D3F-439A-B923-C2CD8C0E54FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHT.DataAccess", "MHT.DataAccess\MHT.DataAccess.csproj", "{ED7FB664-3D3F-439A-B923-C2CD8C0E54FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHT.Entity", "MHT.Entity\MHT.Entity.csproj", "{3763B62E-0E15-4A57-BB1F-CF1D0CDE7F30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHT.Entity", "MHT.Entity\MHT.Entity.csproj", "{3763B62E-0E15-4A57-BB1F-CF1D0CDE7F30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHT.Business", "MHT.Business\MHT.Business.csproj", "{6527A0A9-2990-426C-9983-0F802945E7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHT.Business", "MHT.Business\MHT.Business.csproj", "{6527A0A9-2990-426C-9983-0F802945E7CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zurafworks.Shared", "zurafworks.Shared\zurafworks.Shared.csproj", "{96699336-4F98-48DF-B336-1F73C713AD93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHT.FormUI", "MHT.FormUI\MHT.FormUI.csproj", "{82F20E02-4D12-4456-B739-14427406D8A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHT.FormUI", "MHT.FormUI\MHT.FormUI.csproj", "{82F20E02-4D12-4456-B739-14427406D8A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{690E8CAD-CBB9-4D7C-BE28-858E8FAA07BA}"
+	ProjectSection(SolutionItems) = preProject
+		MigrationScript.ps1 = MigrationScript.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

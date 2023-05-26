@@ -129,6 +129,7 @@
             this.tbxSearch.Size = new System.Drawing.Size(815, 28);
             this.tbxSearch.TabIndex = 0;
             this.tbxSearch.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
             // btnDetay
             // 
